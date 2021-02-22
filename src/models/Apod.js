@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import moment from 'moment'
 
 export default class Apod extends Model {
   // This is the name used as module name of the Vuex Store.
@@ -10,8 +11,9 @@ export default class Apod extends Model {
     return {
       id: this.attr(null),
       copyrights: this.attr(null),
-      date: this.attr(null),
+      date: this.attr(moment().format('YYYY-MM-DD')),
       explanation: this.attr(null),
+      hdurl: this.attr(null),
       media_type: this.attr(null),
       service_version: this.attr(null),
       title: this.attr(null),
