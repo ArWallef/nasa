@@ -2,14 +2,16 @@
   <div class="apods">
     <h1> Astronomie Picture of the Day</h1>
     <h2>{{ apod.title }}</h2>
-    <img :src="apod.hdurl" alt="lastApod">
-    <p>{{ apod.explanation}}</p>
+    <img v-if="apod.media_type == 'image'" :src="apod.url" alt="lastApod">
+    <iframe v-else :src="apod.url" title="Avod"></iframe>
+    <p>{{ apod.explanation }}</p>
   </div>
 </template>
 
 <script>
 import Apod from '@/models/Apod.js'
-import moment from 'moment'
+//import moment from 'moment'
+
 
 export default
 {
@@ -39,9 +41,9 @@ export default
   beforeCreate()
   {
     console.log('beforeCreate'),
+    /*
     Apod.insert({
       data: {
-        id: 1,
         copyrights: 'John Kraus',
         date: moment().format('YYYY-MM-DD'),
         explanation: "What's that on either side of the Moon? Starships. Specifically, they are launch-and-return reusable rockets being developed by SpaceX to lift cargo and eventually humans from the Earth's surface into space.  The two rockets pictured are SN9 (Serial Number 9) and SN10 which were captured near their Boca Chica, Texas launchpad last month posing below January's full Wolf Moon. The Starships house liquid-methane engines inside rugged stainless-steel shells. SN9 was test-launched earlier this month and did well with the exception of one internal rocket that failed to relight during powered descent.  SN10 continues to undergo ground tests and may be test-launched later this month.",
@@ -52,10 +54,22 @@ export default
         url: 'https://apod.nasa.gov/apod/image/2102/StarshipsMoon_Kraus_1080.jpg'
       }
     })
+    */
+    Apod.crud().get(
+      null,
+      {
+        dataKey: null,
+        params: {
+          api_key: 'AiCbMHvnhzGdt5lDGOVLVSyXwAAq63uvP2nGbxxE'
+        }
+      }
+    )
+
   },
   created()
   {
     console.log('created')
+
   },
   mounted()
   {

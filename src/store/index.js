@@ -1,25 +1,12 @@
-/*import Vue from 'vue'
-import Vuex from 'vuex'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})*/
 
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
+import VuexORMCRUD from '@wgr-sa/vuex-orm-crud'
+import axios from 'axios'
 import Apod from '@/models/Apod.js'
 
-Vue.use(Vuex)
 
 // Create a new instance of Database.
 const database = new VuexORM.Database()
@@ -27,6 +14,15 @@ const database = new VuexORM.Database()
 // Register Models to Database.
 database.register(Apod)
 
+
+let client = axios.create({
+  baseURL: 'https://api.nasa.gov/planetary/',
+  timeout: 1000
+});
+VuexORM.use(VuexORMCRUD, { client })
+
+
+Vue.use(Vuex)
 
 // Create Vuex Store and register database through Vuex ORM.
 const store = new Vuex.Store({
