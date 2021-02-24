@@ -5,7 +5,7 @@ export default class Apod extends Model {
   // This is the name used as module name of the Vuex Store.
   static entity = 'apods'
 
-  static apiPath = 'apod'
+  static apiPath = 'apods/index.json'
 
   static primaryKey = 'date'
 

@@ -58,10 +58,10 @@ export default
     Apod.crud().get(
       null,
       {
-        dataKey: null,
-        params: {
+        dataKey: 'apods',
+        /*params: {
           api_key: 'AiCbMHvnhzGdt5lDGOVLVSyXwAAq63uvP2nGbxxE'
-        }
+        }*/
       }
     )
 

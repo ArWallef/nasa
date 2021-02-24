@@ -16,7 +16,7 @@ database.register(Apod)
 
 
 let client = axios.create({
-  baseURL: 'https://api.nasa.gov/planetary/',
+  baseURL: 'http://localhost:8888/api.nasa',
   timeout: 1000
 });
 VuexORM.use(VuexORMCRUD, { client })
